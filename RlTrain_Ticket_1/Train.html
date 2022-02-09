@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #form
+        {  
+            background-color:grey; 
+
+            border:2px solid white;
+
+            border-left-width:20em;
+            border-right-width:20em;
+            border-top-width: 20em;
+            border-bottom-width: 10em;
+           padding:10px 10px 10px 10px;
+            margin-top:5%;
+        }
+        table{
+                margin-left:auto;
+                margin-right:auto;
+            }
+        th{
+            text-align:left;
+        }
+        #add
+        {
+         
+          margin:auto
+           
+            
+        }
+        
+    </style>
+    <script>
+
+      function insertin()
+      {
+          var train_name=document.getElementById("train_name").value;
+          var source=document.getElementById("source").value;
+          var destination=document.getElementById("destination").value;
+          var price=document.getElementById("price").value
+          
+          var data={
+              "Train_name":train_name,
+              "source":source,
+              "destination":destination,
+              "price":price
+          }
+
+          let options={
+              method:'POST',
+              headers:{
+                  'Content-Type':'application/json'
+              },
+              body:JSON.stringify(data)
+          }
+          let fres=fetch("http://localhost:8081/api/trains",options);
+          fres.then(res=>res.json()).then(d=>{
+              console.log("success"+d);
+          })
+
+
+      }
+
+    </script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="form">
+
+        <h1>Train Details:</h1>
+        <table id="table">
+            <tr>
+                <th>Enter Train Number :</th>
+                <td><input type="text" id="trainno"></td>
+            </tr>
+            <tr>
+                <th>Enter Travel Name:</th>
+                <td><input type="text" id="train_name"</td>
+            </tr>
+            <tr>
+                <th>Source </th>
+                <td><input type="text" id="source"</td>
+            </tr>
+            <tr>
+                <th>Destination </th>
+                <td><input type="text" id="destination"</td>
+            </tr>
+            <tr>
+                <th>Price </th>
+                <td><input type="text" id="price"</td>
+            </tr>
+            <tr>
+                
+                <td><input type="submit" id="add" value="Submit" onclick="insertin()"</td>
+                
+            </tr>
+            <br/>
+            <tr>
+                
+                
+                <td><input type="submit" id="click" value="list Trains" onclick="getapi()"</td>
+            </tr>
+            </table>
+            </div>
+</body>
+</html>

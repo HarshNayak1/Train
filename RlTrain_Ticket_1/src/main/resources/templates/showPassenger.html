@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Passenger</title>
+    <style>
+       body {
+	    width:100%;
+	    height:100%;
+        padding: 0px;
+        margin: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    
+    
+
+button{
+width: 200px;
+padding: 15px 0;
+text-align: center;
+margin: 20px 10px;
+border-radius: 25px;
+font-weight: bold;
+border: 2px solid #fe7250;
+background:rgb(0, 0, 0);
+
+color:#fff;
+cursor: pointer;
+transition:  0.5s;
+}
+
+
+button:hover{
+
+ background: transparent;
+ border: 2px solid #fff;
+
+}
+
+    
+    
+button{
+width: 200px;
+padding: 15px 0;
+text-align: center;
+margin: 20px 0px  0px  0px ;
+border-radius: 25px;
+font-weight: bold;
+border: 2px solid #fe7250;
+background: #16a085;
+
+color:black;
+cursor: pointer;
+transition:  0.5s;
+}
+
+
+button:hover{
+
+ background: transparent;
+ border: 2px solid #2fdbb6;
+
+}
+    
+    table {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        border-collapse: collapse;
+        width: 800px;
+        height: 200px;
+        border: 1px solid #bdc3c7;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    tr {
+        transition: all .2s ease-in;
+        cursor: pointer;
+    }
+    
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    #header {
+        background-color: #16a085;
+        color: #fff;
+    }
+    
+    h1 {
+	margin-top: 4%;
+        font-weight: 600;
+        width:50%;
+        text-align: center;
+        margin-left:480px;
+        background-color: #16a085;
+        
+        color: #fff;
+        padding: 10px 0px;
+    }
+    
+    tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.02);
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    @media only screen and (max-width: 768px) {
+        table {
+            width: 90%;
+        }
+    }
+        
+        
+            </style>
+    <!--  <script>
+        function showPassenger(){
+            var id=document.getElementById("id").value;
+        const api_url ="http://localhost:8081/getpassenger/"+id;
+          async function getapi(url) {
+	        let options = {
+              method:'GET'
+          }
+	        const response = await fetch(url,options);
+	        var data = await response.json();
+	        console.log(data);
+	        show(data);
+        }
+        getapi(api_url);
+        function show(data) {
+        let tab =
+          `<tr>
+            <th>P Id</th>
+          <th>Passenger Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          </tr>`;
+              tab += `<tr>
+            <td>${data.pid}</td><br>
+            <td>${data.name} </td>
+            <td>${data.gender}</td>
+            <td>${data.age}</td>	
+          </tr>`;
+	        document.getElementById("pass").innerHTML = tab;
+        }
+        }
+    </script>-->
+</head>
+<body>
+   
+    <div class="passenger">
+       
+        <div class="passenger-right">
+          <a class="active" href="index.html"><button type="button">Logout</button></a>
+          <a href="addPassenger.html"><button type="button">Add Passenger</button></a>
+          <a  href="trainsBook.html"><button type="button">Back</button></a>
+
+        </div>
+    </div>
+   <!--   <div class="details"> 
+        <h1>Show Passenger</h1>
+        <label for="id">Enter Passenger id</label>
+        <input id="id" type="text"><br>
+        <input id="submit" type="submit" class="button" >
+    </div>-->
+    <div id="tabledata" >
+        <h1>Passenger Information</h1>
+        <table id="pass" class="active-row">
+        <tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Gender</th>
+				<th>Action</th>
+			</tr>
+
+			<tr th:each="passenger : ${allPassenger}">
+				<td th:text="${passenger.pid}"></td>
+				<td th:text="${passenger.name}"></td>
+				<td th:text="${passenger.age}"></td>
+				<td th:text="${passenger.gender}"></td>
+				<td><a th:href='@{/updatePassenger/} + ${passenger.pid}'
+					class="btn btn-success">Edit</a> | <a
+					th:href='@{/deletePassenger/} + ${passenger.pid}' class="btn btn-danger">Delete</a></td>
+			</tr></table>
+    </div>
+</body>
+</html>

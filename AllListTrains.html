@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function listall()
+        {
+         let fres=fetch("http://localhost:8081/api/trains");
+          fres.then(res=>res.json()).then(d=>{
+              console.log("success"+JSON.stringify(d));
+          })
+          var a=fres.then(d=>{
+              JSON.stringify(d)});
+
+          
+
+          
+    let tab = 
+        `<tr>
+          <th>Train_no</th>
+          <th>Train_name</th>
+          <th>source</th>
+          <th>Destination</th>
+          <th>Price</th>
+         </tr>`;
+    
+    // Loop to access all rows 
+    /*for (let r of res.list) {
+        tab += `<tr> 
+    <td>${r.train_no} </td>
+    <td>${r.train_name}</td>
+    <td>${r.source}</td> 
+    <td>${r.destination}</td> 
+    <td>${r.price}</td>          
+</tr>`;
+    } */
+    // Setting innerHTML as tab variable
+    document.getElementById("train_no").innerHTML =a;
+    </script>
+
+    
+</head>
+<body>
+    <input type="submit" id="list" value="list trains" onclick="listall()" />
+   </body>
+   </html>

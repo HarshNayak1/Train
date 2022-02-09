@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Train</title>
+    <style>
+       	
+body{
+
+ margin:0;
+ height: 70%;
+ width: 100%;
+ overflow: hidden;
+ font-family: 'Lato','sans-serif';
+ font-weight: 700;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #555;
+ background: #ecf0f3;
+
+
+}
+
+.login-div {
+  width:430px;
+  height: 750px;
+  padding: 10px 55px 55px 55px;
+  border-radius: 40px;
+  background: #ecf0f3;
+  box-shadow: 13px 13px 20px #cbced1,
+              -13px -13px 20px #ffffff;
+}
+
+
+
+.logo {
+  background-image:url("/images/s.png");
+  background-size: 100%;
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+  margin:0 auto;
+  box-shadow:
+  /* logo shadow */
+  0px 0px 2px #5f5f5f,
+  /* offset */
+  0px 0px 0px 5px #ecf0f3,
+  /*bottom right */
+  8px 8px 15px #a7aaaf,
+  /* top left */
+  -8px -8px 15px #ffffff
+  ;
+}
+
+
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  padding-top: 9px;
+  letter-spacing: 0.5px;
+}
+.sub-title {
+  text-align: center;
+  font-size: 15px;
+  padding-top: 0px;
+  letter-spacing: 3px;
+}
+
+
+
+
+
+
+.fields {
+  width: 100%;
+  padding: 15px 5px 5px 5px;
+}
+.fields input {
+  border: none;
+  outline:none;
+  background: none;
+  font-size: 18px;
+  color: #555;
+  padding:20px 10px 20px 5px;
+}
+.username, .password {
+  margin:0px 0px 10px 90px;
+  margin-bottom: 30px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff;
+}
+
+
+
+
+.fields svg {
+  height: 22px;
+  margin:0 10px -3px 25px;
+}
+
+
+
+
+
+
+
+.signin-button {
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:100%;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color:#fff;
+  text-align: center;
+  background: #24cfaa;
+  box-shadow: 3px 3px 8px #b1b1b1,
+              -3px -3px 8px #ffffff;
+  transition: 0.5s;
+}
+.signin-button:hover {
+  background:#2fdbb6;
+}
+.signin-button:active {
+  background:#1da88a;
+}
+.link {
+  padding-top: 20px;
+  text-align: center;
+}
+.link a {
+  text-decoration: none;
+  color:#aaa;
+  font-size: 15px;
+}
+
+
+
+
+
+button{
+width: 200px;
+padding: 15px 0;
+text-align: center;
+margin: 0 0px  700px  -600px ;
+border-radius: 25px;
+font-weight: bold;
+border: 2px solid #fe7250;
+background:#2fdbb6;
+
+color:black;
+cursor: pointer;
+transition:  0.5s;
+}
+
+
+button:hover{
+
+ background: transparent;
+ border: 2px solid #2fdbb6;
+
+}
+
+       
+            </style>
+    <!--  <script>
+        function addTrain(){
+            var tno=document.getElementById("tno").value;
+            var tname=document.getElementById("tname").value;
+            var source=document.getElementById("src").value;
+            var dest=document.getElementById("dest").value;
+            var price=parseInt(document.getElementById("price").value);
+            var data={
+                "Train_name":tname,
+                "source":source,
+                "destination":dest,
+                "price":price
+            }
+            let options = {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+        }
+
+        let fres = fetch("http://localhost:8081/api/inserttrain",options);
+        fres.then(res => res.json()).then(d => {
+            console.log("success"+ d);
+        })
+        }
+    </script>-->
+</head>
+<body>
+  
+      <div class="train">
+       
+        <div class="train-right">
+          <a class="active" href="index.html"><button type="button">Logout</button></a>
+        </div>
+      </div>
+   
+ 
+ 
+ 
+ <div class="login-div">
+  <div class="logo"></div>
+  <div class="title">ADD TRAIN</div>
+  <div class="sub-title"></div>
+  <div class="fields">
+   <form method="post" action="/addTrain">
+    
+    
+    
+    <input type="text" name="tname" class="username" placeholder="Enter Train Name "><br>
+       
+    <input type="text" name="tsource"  class="username" placeholder="Enter Train Source"><br>
+      
+    <input type="text" name="tdest" class="username" placeholder="Enter Train Destination"><br>
+      
+    <input type="text" name="tarrival" class="username" placeholder="Enter Train Arrival"><br>
+       
+    <input type="text" name="tdept" class="username" placeholder="Enter Train Departure "><br>
+        
+    <input type="text" name="tprice" class="username" placeholder="Enter Train Price"><br>
+    
+    
+    <input  type="submit"  class="signin-button" value="ADD">
+    </form>
+
+
+</div>
+</div>
+
+  
+</body>
+</html>

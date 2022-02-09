@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Train</title>
+    <style>
+        
+            </style>
+    <script>
+         function showTrain(){
+            var tno=document.getElementById("tno").value;
+        const api_url ="http://localhost:8080/api/gettrain/"+tno;
+          async function getapi(url) {
+	        let options = {
+              method:'GET'
+          }
+	        const response = await fetch(url,options);
+	        var data = await response.json();
+	        console.log(data);
+	        show(data);
+        }
+        getapi(api_url);
+        function show(data) {
+        let tab =
+          `<tr>
+            <th>Train Number</th>
+          <th>Train Name</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Price</th>
+          </tr>`;
+          tab += `<tr>
+            <td>${data.train_no} </td>
+            <td>${data.train_name}</td>
+            <td>${data.source}</td>
+            <td>${data.destination}</td>
+            <td>${data.price}</td>		
+          </tr>`;
+	        document.getElementById("pass").innerHTML = tab;
+        }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Ticket Reservation System</a>
+        <div class="header-right">
+          <a class="active" href="index.html">Home</a>
+          <a href="Passenger.html">Passenger</a>
+          <a href="Train.html">Train</a>
+          <a href="Ticket.html">Ticket</a>
+        </div>
+      </div>
+      <div class="train">
+        <a href="#default" class="logo1">Train</a>
+        <div class="train-right">
+          <a class="active" href="index.html">Home</a>
+          <a href="addTrain.html">Add Train</a>
+          <a href="updateTrain.html">Update Train</a>
+          <a href="deleteTrain.html">Delete Train</a>
+          <a href="showTrain.html">Get Train</a>
+          <a href="GetTrains.html">Get all Trains</a>
+        </div>
+      </div>
+    <div class="details">
+    <h1>Show Train</h1>
+    <label for="tno">Enter Train Number</label>
+    <input type="text" id="tno"><br>
+    <input id="id" type="submit" class="button" onclick="showTrain()">
+    </div>
+    <div id="tabledata" style="text-align: center;border:2px black solid; width:50%; height:60%; margin-left: 26%;background-color: #f1f1f1;">
+      <h1>Train Information</h1>
+      <table id="pass" class="active-row" style="text-align: center;border: 2px slategrey solid;margin-left: 12%;margin-right:15%;margin-bottom: 5%;"></table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Form</title>
+    <style>
+      .header {
+        overflow: hidden;
+        background-color: #f1f1f1;
+        padding: 20px 10px;
+      }
+      
+      /* Style the header links */
+      .header a {
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+      }
+      
+      /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+      .header a.logo {
+        font-size: 25px;
+        font-weight: bold;
+      }
+      
+      /* Change the background color on mouse-over */
+      .header a:hover {
+        background-color: #ddd;
+        color: rgb(92, 57, 57);
+      }
+      
+      /* Float the link section to the right */
+      .header-right {
+        float: right;
+      }
+      
+      /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+      @media screen and (max-width: 500px) {
+        .header a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+        .header-right {
+          float: none;
+        }
+      }
+      .ticket {
+        overflow: hidden;
+        background-color: #a882bf;
+        padding: 20px 10px;
+      }
+      
+      /* Style the header links */
+      .ticket a {
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+      }
+      
+      /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+      .ticket a.logo1 {
+        font-size: 25px;
+        font-weight: bold;
+      }
+      
+      /* Change the background color on mouse-over */
+      .ticket a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      
+      
+      /* Float the link section to the right */
+      .ticket-right {
+        float: right;
+      }
+      
+      /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+      @media screen and (max-width: 500px) {
+        .ticket a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+        .ticket-right {
+          float: none;
+        }
+      }
+      .details{
+            text-align: center;
+            border:2px #5cb319 solid;
+            margin-left: 37%;
+            width:30%;
+            height: 30%;
+            background-color: aliceblue;
+        }
+        .details h1{
+            color:firebrick;
+        }
+        .details label {
+            color:orange;
+            border: none;
+            /*color: white;*/
+            padding: 10px 25px;
+            margin-bottom:5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .details input{
+          border: none;
+          /* color: white; */
+          padding: 10px 25px;
+          margin-bottom:5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          /* color: white; */
+          padding: 10px 20px;
+          margin-bottom:5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          border-radius: 5px;
+        }
+        .active-row thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.active-row th,
+.active-row td {
+    padding: 12px 15px;
+}
+.active-row tbody tr {
+    border-bottom: 1px solid #929292;
+}
+
+.active-row tbody tr:nth-of-type(even) {
+    background-color:#be8ae3;
+}
+.active-row tbody tr:nth-of-type(odd) {
+    background-color: #929292;
+}
+
+.active-row tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.active-row tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+          </style>
+          <script src="FileSaver.js"></script>
+        <script>
+          function showTicket(){
+             var id=document.getElementById("id").value;
+         const api_url ="http://localhost:8081/api/ticketbyid/"+id;
+           async function getapi(url) {
+           let options = {
+               method:'GET'
+           }
+           const response = await fetch(url,options);
+           var data = await response.json();
+           console.log(data);
+           show(data);
+         }
+         getapi(api_url);
+         function show(data) {
+         let tab =
+           `<tr>
+             <th>PNR Number</th>
+           <th>Train Name</th>
+           <th>Travel Date</th>
+           <th>No.of Passengers</th>
+           <th>Total Price</th>
+           </tr>`;
+           tab += `<tr>
+             <td>${data.pnr} </td>
+             <td>${data.train_name}</td>
+             <td>${data.travel_date}</td>
+             <td>${data.no_of_pass}</td>
+             <td>${data.total_fare}</td>		
+           </tr>`;
+           document.getElementById("pass").innerHTML = tab;
+         }
+         }
+        
+         function saveDynamicDataToFile() {
+           var id = document.getElementById("id").value;
+           const api_url ="http://localhost:8081/api/ticketbyid/"+id;
+           async function getapi(url) {
+           let options = {
+               method:'GET'
+           }
+           const response = await fetch(url,options);
+           var data = await response.json();
+           var pnr=data.pnr;
+           var travel_date=data.travel_date;
+           var train_name=data.train_name;
+           var no_of_pass=data.no_of_pass;
+           var price=data.total_fare;
+           userInput="PNR Number: \t"+pnr+"\n"+"Travel Date: \t"+travel_date+"\n"+"Train Name: \t"+train_name+"\n"+ "Number of Passengers: \t"+no_of_pass+"\n"+"Total Fare: "+price;
+           var blob = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+           var filename=id;
+           saveAs(blob, filename);
+            }
+            getapi(api_url);
+         }
+     </script>
+</head>
+<body>
+    
+      <div class="ticket">
+        <a href="Ticket.html" class="logo1">Ticket Page</a>
+        <div class="passenger-right">
+          <a class="active" href="index.html">Logout</a>
+          <a href="bookticket.html">Book Ticket</a>
+          <a  href="trainsBook.html">Back</a>
+         
+        </div>
+      </div>
+      <div class="details">
+      <label for="id">Enter Pnr Number</label>
+      <input type="text" id="id"><br>
+      <button onclick="showTicket()" class="button">Show Ticket</button>
+      </div>
+      <div id="tabledata" style="text-align: center;border:2px black solid; width:55%; height:70%; margin-left: 25%;background-color: #f1f1f1;">
+        <h1>Train Information</h1>
+        <table id="pass" class="active-row" style="text-align: center;border: 2px salmon solid;margin-left: 10%;margin-bottom: 5%;margin-right: 5%;"></table>
+    </div>
+    <button type="button" onclick="saveDynamicDataToFile();">Click to Download</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book_Train</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&display=swap');
+
+
+
+*{
+
+margin: 0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+body{
+
+
+
+
+
+min-height:100vh;
+background:#03080a;
+
+}
+
+
+.column{
+
+ float: left;
+ width: 50%;
+ padding: 10px;
+
+
+
+}
+
+.row::after{
+content: "";
+display: table;
+clear: both;
+
+
+}
+
+
+.container{
+
+
+width:80%;
+padding:20px;
+
+}
+
+
+
+.container h2{
+
+ width:100%;
+ color:#45f3ff;
+ font-size:36px;
+ text-align:center;
+ margin-bottom:10px;
+
+}
+
+.container .row100{
+
+position:relative;
+width:100%;
+display:grid;
+grid-template-columns:repeat(autofit,minmax(300px,1fr));
+
+}
+
+.container .row100 .col{
+
+  position:relative;
+  width:100%;
+  padding: 0 10px;
+  margin:30px 0 10px;
+  transition:0.5s;
+
+}
+
+
+
+.container .row100 .inputBox{
+
+
+position:relative;
+width:100%;
+height:40px;
+color:#45f3ff;
+}
+
+
+
+.container .row100 .inputBox input,
+.container .row100 .inputBox .textarea textarea{
+
+position: absolute;
+width: 100%;
+height:100%;
+background: transparent;
+box-shadow :none;
+border: none;
+outline:none;
+font-size:18px;
+padding: 0 10px;
+z-index:1;
+color:#000;
+
+}
+
+
+
+.container .row100 .inputBox .text{
+
+
+position:absolute;
+top:0;
+left:0;
+line-height:40px;
+font-size:18px;
+padding:0 10px;
+display:block;
+transition:0.5s;
+pointer-events: none;
+}
+
+
+
+.container .row100 .inputBox input:focus + .text,
+.container .row100 .inputBox input:valid + .text{
+
+  top: -35px;
+  left:-10px;
+
+
+}
+
+
+.container .row100 .inputBox .line{
+
+position: absolute;
+bottom:0;
+display:block;
+width:100%;
+height: 2px;
+background: #45f3ff;
+transition:0.5s;
+border-radius:2px;
+pointer-events:none;
+
+
+
+}
+
+
+
+
+.container .row100 .inputBox input~.line,
+.container .row100 .inputBox input~.line{
+
+height: 100%;
+
+}
+
+
+.container .gumit .row100 .inputBox input:focus ~.line,
+.container .gumit .row100 .inputBox input:valid ~.line{
+
+height: 100%;
+
+}
+
+
+.container .row100 .inputBox .textarea{
+
+position:relative;
+width:100%;
+height:100px;
+padding: 10px 0;
+
+
+}
+
+
+.container .row100 .inputBox .textarea textarea{
+
+ height:100%;
+ resize: none;
+
+}
+
+.container .row100 .inputBox textarea:focus + .text,
+.container .row100 .inputBox textarea:valid + .text{
+
+  top: -35px;
+  left:-10px;
+
+
+}
+
+input[type="submit"]{
+
+margin-left:2%;
+border:none;
+padding:7px 35px;
+cursor:pointer;
+outline:none;
+background:#45f3ff;
+color:#000;
+font-size:18px;
+border-radius:2px;
+
+
+}
+
+</style>
+
+</head>
+<body>
+
+ <div class="container" style="margin-left:9%">
+	<h2 align="center">Ticket Booking Form</h2>
+	<br>
+</div>
+
+           
+<div class="row">
+  <div class="column">
+
+
+              <div class="container">
+				<h2>Your Train Details</h2>
+
+
+
+    <div class="row100">
+      <div class="col">
+        <div class="inputBox">
+			<input type="text" th:field="${train.tid}"
+					readonly="readonly"  required="required">
+					
+					   <span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Train Number</span>
+          <span class="line"></span>
+     </div>
+    </div>
+					
+	
+			
+			
+			
+				
+		  <div class="col">
+      <div class="inputBox">			
+		<input type="text" th:field="${train.tname}"
+					readonly="readonly" required="required">
+					   <span class="text"  required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Train Name</span>
+        <span class="line"></span>
+   </div>
+  </div>
+</div>
+ 
+					
+					
+			<div class="row100">
+      <div class="col">
+        <div class="inputBox">		
+				</p> <input type="text"
+					th:field="${train.tsource}" readonly="readonly" required="required">
+					   <span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Train Source</span>
+          <span class="line"></span>
+     </div>
+    </div>
+					
+					
+					
+					  <div class="col">
+      <div class="inputBox">	
+				<input type="text"
+					th:field="${train.tdest}" readonly="readonly" required="required">
+					   <span class="text"  required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					   Train Destination</span>
+        <span class="line"></span>
+   </div>
+  </div>
+</div>
+ 
+					
+			<div class="row100">
+      <div class="col">
+        <div class="inputBox">			
+			<input type="text"
+					th:field="${train.tarrival}" readonly="readonly" required="required">
+							   <span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							   Train Arrival</span>
+          <span class="line"></span>
+     </div>
+    </div>
+					
+					
+				<div class="col">
+        <div class="inputBox">		
+				</p><input type="text"
+					th:field="${train.tdept}" readonly="readonly" required="required">
+					  <span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					  Train Departure</span>
+          <span class="line"></span>
+     </div>
+    </div>
+  
+					
+					
+				<div class="col">
+        <div class="inputBox">		
+		<input type="text" th:field="${train.tprice}"
+					readonly="readonly" required="required">
+			  <span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Train Fare</span>
+          <span class="line"></span>
+     </div>
+    </div>
+    </div>
+    
+				
+				
+			</div>
+			
+		</div>	
+			
+		
+		
+		
+		
+		
+		
+  <div class="column">
+  
+  <div class="container">
+					<h2>Enter Passenger Details</h2>
+
+					<form th:action="@{/bookTrain/} + ${train.tid}" method="post">
+
+
+                    <div  class="gumit">
+                        <div class="row100">
+      <div class="col">
+        <div class="inputBox">
+						 <input type="text" name="name"  required="required"> 
+									   <span class="text" required="required">Name</span>
+          <span class="line"></span>
+     </div>
+    </div>
+						
+						     <div class="col">
+        <div class="inputBox">
+						
+					<input type="radio" name="gender" value="M" required="required">
+					
+					<span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</span>
+        
+     </div>
+    </div>
+				 <div class="col">
+        <div class="inputBox">
+						
+					<input type="radio" name="gender" value="F" required="required">
+						
+								   <span class="text" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</span>
+         
+     </div>
+    </div>
+			
+						
+						 <div class="col">
+        <div class="inputBox">
+						 <input type="number" name="age" required="required">
+						   <span class="text" required="required">Age</span>
+          <span class="line"></span>
+     </div>
+    </div>
+			
+						 
+						
+			
+						 <div class="col">
+        <div class="inputBox">
+						<input type="date" name="travelDate"
+							min="2021-11-29" required="required"> 
+							  <span class="text" required="required">Date</span>
+          <span class="line"></span>
+     </div>
+    </div>
+			</div>
+			
+			</div>
+							
+							
+						<input type="submit" value="Confirm">
+						
+					
+
+					</form>
+
+</div>
+				</div>
+				
+				
+				</div>
+
+		
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body{
+      padding: 50px;
+      text-align:left;
+      background-image:url('/images/cbg.jpg');
+      background-repeat: no-repeat;
+      background-size:cover;
+    }
+    label{
+      color:white;
+      }
+    div{
+    color:white;
+    }
+    #button{margin-left:150px; margin-top:10px}
+  </style>
+    <meta charset="UTF-8">
+    <title>Source_dest</title>
+
+
+
+
+</head>
+<body>
+<form>
+  <label  for="TrainNo">Select TrainNo:</label>
+  <select name="TrainNo" id="TrainNo">
+    <option value="101">101</option>
+    <option value="102">102</option>
+    <option value="103">103</option>
+    <option value="104">104</option>
+    <option value="105">105</option>
+    <option value="106">106</option>
+  </select>
+  <br><br>
+  <label for="dateofjourney">Date of Journey:</label>
+  <input type="date" id="dateofjourney" name="dateofjourney" />
+  <br><br>
+  <label for="passcount">No Of Passengers:</label><input id="passcount" type="number" name="passcount"/>
+<!--  <a href="#" id="pass" onclick="addPassengers()">click here to add passenger</a>-->
+
+
+
+  <div id="button">
+    <a href="TicketBooking.html"><input type="button" id="submit" value="Submit"></a>
+  </div>
+  <br/><br/>
+  <hr/>
+  <!--<button type="submit" value="BookTicket">Submit</button>-->
+</form>
+<!--
+<form action="/src/main/webapp/WEB-INF/proj3.txt">
+  <button type="submit" value="BookTicket">Submit</button>
+</form>
+-->
+</body>
+</html>

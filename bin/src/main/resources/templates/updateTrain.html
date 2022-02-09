@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Train</title>
+    <style>
+        .header {
+          overflow: hidden;
+          background-color: #f1f1f1;
+          padding: 20px 10px;
+        }
+        
+        /* Style the header links */
+        .header a {
+          float: left;
+          color: black;
+          text-align: center;
+          padding: 12px;
+          text-decoration: none;
+          font-size: 18px;
+          line-height: 25px;
+          border-radius: 4px;
+        }
+        
+        /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+        .header a.logo {
+          font-size: 25px;
+          font-weight: bold;
+        }
+        
+        /* Change the background color on mouse-over */
+        .header a:hover {
+          background-color: #ddd;
+          color: rgb(92, 57, 57);
+        }
+    
+        
+        /* Float the link section to the right */
+        .header-right {
+          float: right;
+        }
+        
+        /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+        @media screen and (max-width: 500px) {
+          .header a {
+            float: none;
+            display: block;
+            text-align: left;
+          }
+          .header-right {
+            float: none;
+          }
+        }
+        .train {
+          overflow: hidden;
+          background-color: #278896;
+          padding: 20px 10px;
+        }
+        
+        /* Style the header links */
+        .train a {
+          float: left;
+          color: black;
+          text-align: center;
+          padding: 12px;
+          text-decoration: none;
+          font-size: 18px;
+          line-height: 25px;
+          border-radius: 4px;
+          border:2px olive solid;
+        }
+        
+        /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+        .train a.logo1 {
+          font-size: 25px;
+          font-weight: bold;
+        }
+        
+        /* Change the background color on mouse-over */
+        .train a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+        
+        
+        /* Float the link section to the right */
+        .train-right {
+          float: right;
+        }
+        
+        /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+        @media screen and (max-width: 500px) {
+          .train a {
+            float: none;
+            display: block;
+            text-align: left;
+          }
+          .train-right {
+            float: none;
+          }
+        }
+        .details{
+            text-align: center;
+           
+            margin-left: 30%;
+            width:45%;
+            height: 40%;
+            background-color: black;
+        }
+        .details h1{
+            color:aquamarine;
+        }
+        .details label {
+            color:orange;
+            border: none;
+            /*color: white;*/
+            padding: 10px 25px;
+            margin-bottom:5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .details input{
+          border: none;
+          /* color: white; */
+          padding: 10px 25px;
+          margin-bottom:5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          /* color: white; */
+          padding: 20px 35px;
+          margin-bottom:5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          border-radius: 5px;
+        }
+            </style>
+  <!--    <script>
+        function updateTrain(){
+            var tno=document.getElementById("tno").value;
+            var tname=document.getElementById("tname").value;
+            var source=document.getElementById("src").value;
+            var dest=document.getElementById("dest").value;
+            var price=parseInt(document.getElementById("price").value);
+            var data={
+                "Train_name":tname,
+                "source":source,
+                "destination":dest,
+                "price":price
+            }
+            let options = {
+            method:'PUT',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+        }
+
+        let fres = fetch("http://localhost:8081/api/updatetrain/"+tno,options);
+        fres.then(res => res.json()).then(d => {
+            console.log("success"+ d);
+        })
+        }
+    </script>-->
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Ticket Reservation System</a>
+        <div class="header-right">
+          <a class="active" href="index.html">Home</a>
+          <a href="Passenger.html">Passenger</a>
+          <a href="Train.html">Train</a>
+          <a href="Ticket.html">Ticket</a>
+        </div>
+      </div>
+      <div class="train">
+        <a href="#default" class="logo1">Train</a>
+        <div class="train-right">
+          <a class="active" href="index.html">Home</a>
+          <a href="addTrain.html">Add Train</a>
+          
+          <a href="GetTrains.html">Get all Trains</a>
+        </div>
+      </div>
+    <div class="details">
+    <h1>Update Train</h1>
+    <form method="post" action="/updateTrain">
+    
+    <input type="hidden" name="tid" th:field="${train.tid}" style="margin-left: 30px;"><br>
+    <label >Enter Train Name</label>
+    <input type="text" name="tname" th:field="${train.tname}" style="margin-left: 5px;"><br>
+        <label >Enter Train Source</label>
+    <input type="text" name="tsource" th:field="${train.tsource}"  style="margin-left: 5px;"><br>
+      <label >Enter Train Destination</label>
+    <input type="text" name="tdest"  th:field="${train.tdest}" style="margin-left: 5px;"><br>
+       <label >Enter Train Arrival</label>
+    <input type="text" name="tarrival"  th:field="${train.tarrival}" style="margin-left: 5px;"><br>
+        <label >Enter Train Departure</label>
+    <input type="text" name="tdept"  th:field="${train.tdept}" style="margin-left: 5px;"><br>
+        <label >Enter Train Price</label>
+    <input type="text" name="tprice"  th:field="${train.tprice}" style="margin-left: 5px;"><br>
+    
+    
+    <input  type="submit" class="button" value="UPDATE">
+    </form>
+    </div>
+</body>
+</html>

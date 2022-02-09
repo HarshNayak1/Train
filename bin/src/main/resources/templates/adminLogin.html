@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Reservation</title>
+    <style>
+      body{
+        background-image: url("/images/adminLogin.png");
+        background-repeat:no-repeat;
+        background-size:cover;
+      }
+.header {
+  overflow: hidden;
+  padding: 20px 10px;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color:yellow;
+  text-align: center;
+  padding: 16px;
+  font-variant-ligatures: contextual;
+  font-size: 26px;
+  line-height: 28px;
+  border-radius: 4px;
+  font-style: oblique;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Ticket Reservation System</a>
+        <div class="header-right">
+          <a class="active" href="index.html">Home</a>
+          <a href="Passenger.html">Passenger</a>
+          <a href="Train.html">Train</a>
+          <a href="Ticket.html">Ticket</a>
+        </div>
+      </div>
+</body>
+</html>
